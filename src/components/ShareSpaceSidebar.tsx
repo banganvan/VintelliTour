@@ -92,6 +92,36 @@ const samplePosts: Post[] = [
     imageUrl: '/images/360/canh_2.jpg',
     timestamp: '2 giờ trước',
   },
+  {
+    id: '3',
+    title: 'Khám phá Phố cổ Hội An qua góc nhìn 360',
+    content: 'Dạo bước qua những con phố cổ kính của Hội An với công nghệ thực tế ảo...',
+    author: {
+      name: 'Lê Văn C',
+      avatar: '/images/avatars/avatar3.jpg',
+    },
+    likes: 156,
+    comments: 52,
+    shares: 45,
+    tags: ['Hội An', '360 độ', 'Di sản'],
+    imageUrl: '/images/360/hoian.jpg',
+    timestamp: '3 giờ trước',
+  },
+  {
+    id: '4',
+    title: 'Top 5 địa điểm check-in 360 độ tại Đà Lạt',
+    content: 'Những địa điểm không thể bỏ qua khi khám phá thành phố ngàn hoa...',
+    author: {
+      name: 'Phạm Thị D',
+      avatar: '/images/avatars/avatar4.jpg',
+    },
+    likes: 210,
+    comments: 67,
+    shares: 89,
+    tags: ['Đà Lạt', '360 độ', 'Du lịch'],
+    imageUrl: '/images/360/dalat.jpg',
+    timestamp: '4 giờ trước',
+  }
 ];
 
 const StyledFormControl = styled(FormControl)(({ theme }) => ({
@@ -176,13 +206,14 @@ export default function ShareSpaceSidebar() {
       <Typography variant="h6" sx={{ mb: 2, fontWeight: 'bold' }}>
         Bài viết nổi bật
       </Typography>
-      <List>
+      <List sx={{ width: '100%', p: 0 }}>
         {posts.map((post, index) => (
           <div key={post.id}>
             <Link href={`/share-space/${post.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
               <StyledListItem>
-                <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
-                  <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
+                <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%', gap: 2 }}>
+                  {/* Author Info */}
+                  <Box sx={{ display: 'flex', alignItems: 'center' }}>
                     <Avatar src={post.author.avatar} sx={{ width: 40, height: 40, mr: 2 }} />
                     <Box>
                       <Typography variant="subtitle1" sx={{ fontWeight: 'bold' }}>
@@ -193,27 +224,99 @@ export default function ShareSpaceSidebar() {
                       </Typography>
                     </Box>
                   </Box>
-                  <Typography variant="body1" sx={{ mb: 1 }}>
-                    {post.content}
-                  </Typography>
-                  <Box sx={{ display: 'flex', gap: 2 }}>
-                    <IconButton size="small">
-                      <FaHeart />
-                    </IconButton>
-                    <Typography variant="caption">{post.likes}</Typography>
-                    <IconButton size="small">
-                      <FaComment />
-                    </IconButton>
-                    <Typography variant="caption">{post.comments}</Typography>
-                    <IconButton size="small">
-                      <FaShare />
-                    </IconButton>
-                    <Typography variant="caption">{post.shares}</Typography>
+
+                  {/* Post Image */}
+                  <Box 
+                    sx={{ 
+                      width: '100%', 
+                      height: 160, 
+                      borderRadius: 1,
+                      overflow: 'hidden',
+                      position: 'relative'
+                    }}
+                  >
+                    <img 
+                      src={post.imageUrl} 
+                      alt={post.title}
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                      }}
+                    />
+                  </Box>
+
+                  {/* Post Title and Content */}
+                  <Box>
+                    <Typography variant="h6" sx={{ fontSize: '1.1rem', fontWeight: 'bold', mb: 1 }}>
+                      {post.title}
+                    </Typography>
+                    <Typography 
+                      variant="body2" 
+                      color="text.secondary"
+                      sx={{ 
+                        mb: 1,
+                        display: '-webkit-box',
+                        WebkitLineClamp: 2,
+                        WebkitBoxOrient: 'vertical',
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis'
+                      }}
+                    >
+                      {post.content}
+                    </Typography>
+                  </Box>
+
+                  {/* Tags */}
+                  <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap', mb: 1 }}>
+                    {post.tags.map((tag) => (
+                      <Chip 
+                        key={tag} 
+                        label={tag} 
+                        size="small"
+                        sx={{ 
+                          backgroundColor: 'primary.main',
+                          color: 'white',
+                          '&:hover': {
+                            backgroundColor: 'primary.dark',
+                          }
+                        }}
+                      />
+                    ))}
+                  </Box>
+
+                  {/* Interaction Buttons */}
+                  <Box sx={{ 
+                    display: 'flex', 
+                    gap: 3,
+                    color: 'text.secondary',
+                    '& .MuiIconButton-root': {
+                      color: 'inherit'
+                    }
+                  }}>
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                      <IconButton size="small" onClick={(e) => handleLike(post.id, e)}>
+                        <FaHeart />
+                      </IconButton>
+                      <Typography variant="caption">{post.likes}</Typography>
+                    </Box>
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                      <IconButton size="small" onClick={(e) => handleComment(post.id, e)}>
+                        <FaComment />
+                      </IconButton>
+                      <Typography variant="caption">{post.comments}</Typography>
+                    </Box>
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                      <IconButton size="small" onClick={(e) => handleShare(post.id, e)}>
+                        <FaShare />
+                      </IconButton>
+                      <Typography variant="caption">{post.shares}</Typography>
+                    </Box>
                   </Box>
                 </Box>
               </StyledListItem>
             </Link>
-            {index < posts.length - 1 && <Divider />}
+            {index < posts.length - 1 && <Divider sx={{ my: 2 }} />}
           </div>
         ))}
       </List>
