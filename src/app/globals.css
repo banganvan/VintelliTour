@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #e7e0e0;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #ffffff;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Full viewport height */
+  margin: 0;
+} 
+
+header {
+  background: #ffffff;
+  color: white;
+  text-align: center;
+  position: fixed; /* Fixed at the top */
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000; /* Ensures header is on top */
+}
+
+main {
+  margin-top: 60px; /* Adjust according to header height */
+  flex: 1; /* Takes up remaining space between header and footer */
+  padding: 20px;
+  background: #ffffff;
+}
+
+footer {
+  background: #ffffff;
+  color: white;
+  padding: 10px 0;
+  text-align: center;
+}
