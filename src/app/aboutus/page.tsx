@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export default function AboutUs(){
     return(
         <section className="py-24 relative xl:mr-0 lg:mr-5 mr-0">
@@ -52,8 +54,13 @@ export default function AboutUs(){
                 <div className="w-full lg:justify-start justify-center items-start flex">
                     <div
                         className="sm:w-[564px] w-full sm:h-[646px] h-full sm:bg-gray-100 rounded-3xl sm:border border-gray-200 relative">
-                        <img className="sm:mt-5 sm:ml-5 w-full h-full rounded-3xl object-cover "
-                            src="/img/VN.jpg" alt="about Us image" />
+                        <Image 
+                            src="/img/VN.jpg" 
+                            alt="about Us image" 
+                            fill
+                            className="sm:mt-5 sm:ml-5 rounded-3xl object-cover"
+                            sizes="(max-width: 640px) 100vw, 564px"
+                        />
                     </div>
                 </div>
             </div>

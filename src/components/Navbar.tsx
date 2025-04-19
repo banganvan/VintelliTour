@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Navbar() {
   const [active, setActive] = useState('home');
@@ -11,7 +12,13 @@ export default function Navbar() {
       className="w-full mx-auto relative flex items-center justify-between bg-white bg-black/80 py-0 text-black border-b border-blue-600/20 shadow-lg shadow-blue-400/20">
       <div className="flex-shrink-0 px-4">
         <Link href="/">
-          <img src="/img/Logo_merus.png" alt="VintelliTour Logo" className="w-40 ml-15 h-auto cursor-pointer" />
+          <Image 
+            src="/img/Logo_merus.png" 
+            alt="VintelliTour Logo" 
+            width={160}
+            height={40}
+            className="w-40 ml-15 h-auto cursor-pointer" 
+          />
         </Link>
       </div>
       <ul

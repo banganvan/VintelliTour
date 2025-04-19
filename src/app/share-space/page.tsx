@@ -1,9 +1,10 @@
 'use client';
 
 import React from 'react';
-import { Box, Container, Typography, Card, CardContent, CardMedia, Avatar, IconButton, Grid } from '@mui/material';
+import { Box, Container, Typography, Card, CardContent, Avatar, IconButton, Grid } from '@mui/material';
 import { FaHeart, FaComment, FaShare } from 'react-icons/fa';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const posts = [
   {
@@ -12,12 +13,12 @@ const posts = [
     content: 'Trải nghiệm vịnh Hạ Long với góc nhìn 360 độ tuyệt đẹp...',
     author: {
       name: 'Nguyễn Văn A',
-      avatar: '/images/avatars/avatar1.jpg',
+      avatar: '/img/avatars/avatar1.jpg',
     },
     likes: 120,
     comments: 45,
     shares: 30,
-    imageUrl: '/images/360/canh_1.jpg',
+    imageUrl: '/img/360/canh_1.jpg',
   },
   {
     id: '2',
@@ -25,12 +26,12 @@ const posts = [
     content: 'Hướng dẫn chi tiết cách tạo ảnh 360 độ...',
     author: {
       name: 'Trần Thị B',
-      avatar: '/images/avatars/avatar2.jpg',
+      avatar: '/img/avatars/avatar2.jpg',
     },
     likes: 89,
     comments: 23,
     shares: 15,
-    imageUrl: '/images/360/canh_2.jpg',
+    imageUrl: '/img/360/canh_2.jpg',
   },
 ];
 
@@ -76,19 +77,15 @@ export default function ShareSpacePage() {
                   }
                 }}
               >
-                <CardMedia
-                  component="img"
-                  height="200"
-                  image={post.imageUrl}
-                  alt={post.title}
-                  sx={{ 
-                    objectFit: 'cover',
-                    transition: 'transform 0.3s ease-in-out',
-                    '&:hover': {
-                      transform: 'scale(1.05)',
-                    }
-                  }}
-                />
+                <Box sx={{ position: 'relative', width: '100%', height: '200px' }}>
+                  <Image
+                    src={post.imageUrl}
+                    alt={post.title}
+                    fill
+                    style={{ objectFit: 'cover' }}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw"
+                  />
+                </Box>
                 <CardContent>
                   <Box 
                     sx={{ 

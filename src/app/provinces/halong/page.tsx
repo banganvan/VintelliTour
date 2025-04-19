@@ -1,7 +1,8 @@
 'use client';
 
-import { Box, Container, Typography, Grid, Card, CardMedia, CardContent, Chip } from '@mui/material';
+import { Box, Container, Typography, Card, CardContent, Chip } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import Image from 'next/image';
 
 const StyledCard = styled(Card)(({ theme }) => ({
   height: '100%',
@@ -18,28 +19,28 @@ const attractions = [
     id: 1,
     title: 'Vịnh Hạ Long',
     description: 'Kỳ quan thiên nhiên thế giới với hàng nghìn đảo đá vôi kỳ vĩ.',
-    image: '/images/provinces/halong/vinh-ha-long.jpg',
+    image: '/img/provinces/halong/vinh-ha-long.jpg',
     tags: ['Di sản thế giới', 'Cảnh đẹp'],
   },
   {
     id: 2,
     title: 'Hang Sửng Sốt',
     description: 'Một trong những hang động đẹp nhất vịnh Hạ Long với hệ thống nhũ đá độc đáo.',
-    image: '/images/provinces/halong/hang-sung-sot.jpg',
+    image: '/img/provinces/halong/hang-sung-sot.jpg',
     tags: ['Thiên nhiên', 'Khám phá'],
   },
   {
     id: 3,
     title: 'Làng chài Cửa Vạn',
     description: 'Làng chài nổi tiếng với cuộc sống thủy cư độc đáo của người dân địa phương.',
-    image: '/images/provinces/halong/lang-chai.jpg',
+    image: '/img/provinces/halong/lang-chai.jpg',
     tags: ['Văn hóa', 'Trải nghiệm'],
   },
   {
     id: 4,
     title: 'Đảo Tuần Châu',
     description: 'Hòn đảo đẹp với bãi biển cát trắng và các hoạt động giải trí đa dạng.',
-    image: '/images/provinces/halong/tuan-chau.jpg',
+    image: '/img/provinces/halong/tuan-chau.jpg',
     tags: ['Nghỉ dưỡng', 'Giải trí'],
   },
 ];
@@ -63,16 +64,19 @@ export default function HalongPage() {
           Điểm đến nổi bật
         </Typography>
 
-        <Grid container spacing={4} sx={{ mt: 2 }}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mt-4">
           {attractions.map((attraction) => (
-            <Grid item xs={12} sm={6} md={3} key={attraction.id}>
+            <div key={attraction.id}>
               <StyledCard>
-                <CardMedia
-                  component="img"
-                  height="200"
-                  image={attraction.image}
-                  alt={attraction.title}
-                />
+                <Box sx={{ position: 'relative', width: '100%', height: '200px' }}>
+                  <Image
+                    src={attraction.image}
+                    alt={attraction.title}
+                    fill
+                    style={{ objectFit: 'cover' }}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
+                </Box>
                 <CardContent>
                   <Typography gutterBottom variant="h6" component="div">
                     {attraction.title}
@@ -87,9 +91,9 @@ export default function HalongPage() {
                   </Box>
                 </CardContent>
               </StyledCard>
-            </Grid>
+            </div>
           ))}
-        </Grid>
+        </div>
 
         <Box sx={{ mt: 4 }}>
           <Typography variant="h4" gutterBottom>

@@ -10,6 +10,7 @@ import { styled } from '@mui/material/styles';
 import ShareSpaceSidebar from '@/components/ShareSpaceSidebar';
 import Navbar from '@/components/Navbar';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
+import Image from 'next/image';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -128,7 +129,7 @@ export default function RootLayout({ children }: Props) {
                 <div className="max-w-screen-xl mx-auto px-4 sm:px-6">
                   <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
                     <div className="col-span-2">
-                      <img src="img/Logo_merus.png" alt="description" className="w-40  h-auto" />
+                      <Image src="/img/Logo_merus.png" alt="description" width={160} height={160} className="w-40  h-auto"/>
                       <p className="text-sm text-gray-600 text-left">Website kết hợp du lịch, văn hóa và trí tuệ nhân tạo, mang đến trải nghiệm khám phá Việt Nam thông minh và cá nhân hóa.</p>
                       <div className="flex space-x-4 mt-4">
                         <a href="https://www.facebook.com/anvanket1402" className="text-white-600 text-3xl hover:text-blue-500 rounded-full p-2 border-blue-2 bg-blue-600">
@@ -178,13 +179,13 @@ export default function RootLayout({ children }: Props) {
                       <p className="text-sm text-gray-500 ">&copy; 2025 VintelliTour. Tất cả quyền lợi được bảo vệ.</p>
                     </div>
                     <div className="text-right flex space-x-8">
-                      <img src="img/brand-threejs.svg" alt="description" className="inline-block w-auto" />
-                      <img src="img/Langchain--Streamline-Simple-Icons.svg" alt="description" className="inline-block w-auto" />
-                      <img src="img/LangGraph_icon.png" alt="description" className="inline-block w-15 h-15" />
-                      <img src="img/leaflet.svg" alt="description" className="inline-block w-auto w-5 h-5 mt-4" />
-                      <img src="img/mongodb-original-wordmark.svg" alt="description" className="inline-block mt-3 w-auto w-8 h-8" />
-                      <img src="img/nextjs.svg" alt="description" className="inline-block w-auto w-8 h-8 mt-3" />
-                      <img src="img/tailwind-css.svg" alt="description" className="inline-block w-auto w-5 h-5 mt-4" />
+                      <Image src="/img/brand-threejs.svg" alt="description" width={160} height={160} className="inline-block w-auto" />
+                      <Image src="/img/Langchain--Streamline-Simple-Icons.svg" alt="description" width={160} height={160} className="inline-block w-auto" />
+                      <Image src="/img/LangGraph_icon.png" alt="description" width={160} height={160} className="inline-block w-15 h-15" />
+                      <Image src="/img/leaflet.svg" alt="description" width={160} height={160} className="inline-block w-auto w-5 h-5 mt-4" />
+                      <Image src="/img/mongodb-original-wordmark.svg" alt="description" width={160} height={160} className="inline-block mt-3 w-auto w-8 h-8" />
+                      <Image src="/img/nextjs.svg" alt="description" width={160} height={160} className="inline-block w-auto w-8 h-8 mt-3" />
+                      <Image src="/img/tailwind-css.svg" alt="description" width={160} height={160} className="inline-block w-auto w-5 h-5 mt-4" />
                     </div>
                   </div>
                 </div>

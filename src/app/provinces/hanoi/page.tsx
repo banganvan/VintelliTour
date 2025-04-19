@@ -1,7 +1,8 @@
 'use client';
 
-import { Box, Container, Typography, Grid, Card, CardMedia, CardContent, Chip } from '@mui/material';
+import { Box, Container, Typography, Card, CardContent, Chip } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import Image from 'next/image';
 
 const StyledCard = styled(Card)(({ theme }) => ({
   height: '100%',
@@ -63,16 +64,19 @@ export default function HanoiPage() {
           Điểm đến nổi bật
         </Typography>
 
-        <Grid container spacing={4} sx={{ mt: 2 }}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mt-4">
           {attractions.map((attraction) => (
-            <Grid item xs={12} sm={6} md={3} key={attraction.id}>
+            <div key={attraction.id}>
               <StyledCard>
-                <CardMedia
-                  component="img"
-                  height="200"
-                  image={attraction.image}
-                  alt={attraction.title}
-                />
+                <Box sx={{ position: 'relative', width: '100%', height: '200px' }}>
+                  <Image
+                    src={attraction.image}
+                    alt={attraction.title}
+                    fill
+                    style={{ objectFit: 'cover' }}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
+                </Box>
                 <CardContent>
                   <Typography gutterBottom variant="h6" component="div">
                     {attraction.title}
@@ -87,9 +91,9 @@ export default function HanoiPage() {
                   </Box>
                 </CardContent>
               </StyledCard>
-            </Grid>
+            </div>
           ))}
-        </Grid>
+        </div>
 
         <Box sx={{ mt: 4 }}>
           <Typography variant="h4" gutterBottom>

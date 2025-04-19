@@ -6,6 +6,7 @@ import { styled } from '@mui/material/styles';
 import { FaHeart, FaComment, FaShare } from 'react-icons/fa';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface Post {
   id: string;
@@ -68,13 +69,13 @@ const samplePosts: Post[] = [
     content: 'Trải nghiệm vịnh Hạ Long với góc nhìn 360 độ tuyệt đẹp...',
     author: {
       name: 'Nguyễn Văn A',
-      avatar: '/images/avatars/avatar1.jpg',
+      avatar: '/img/avatars/avatar1.jpg',
     },
     likes: 120,
     comments: 45,
     shares: 30,
     tags: ['Hạ Long', '360 độ', 'Du lịch'],
-    imageUrl: '/images/360/canh_1.jpg',
+    imageUrl: '/img/360/canh_1.jpg',
     timestamp: '1 giờ trước',
   },
   {
@@ -83,13 +84,13 @@ const samplePosts: Post[] = [
     content: 'Cách tạo và chia sẻ ảnh 360 độ cho người mới bắt đầu...',
     author: {
       name: 'Trần Thị B',
-      avatar: '/images/avatars/avatar2.jpg',
+      avatar: '/img/avatars/avatar2.jpg',
     },
     likes: 89,
     comments: 23,
     shares: 15,
     tags: ['Hướng dẫn', 'Công nghệ', '360 độ'],
-    imageUrl: '/images/360/canh_2.jpg',
+    imageUrl: '/img/360/canh_2.jpg',
     timestamp: '2 giờ trước',
   },
   {
@@ -98,13 +99,13 @@ const samplePosts: Post[] = [
     content: 'Dạo bước qua những con phố cổ kính của Hội An với công nghệ thực tế ảo...',
     author: {
       name: 'Lê Văn C',
-      avatar: '/images/avatars/avatar3.jpg',
+      avatar: '/img/avatars/avatar3.jpg',
     },
     likes: 156,
     comments: 52,
     shares: 45,
     tags: ['Hội An', '360 độ', 'Di sản'],
-    imageUrl: '/images/360/hoian.jpg',
+    imageUrl: '/img/360/hoian.jpg',
     timestamp: '3 giờ trước',
   },
   {
@@ -113,13 +114,13 @@ const samplePosts: Post[] = [
     content: 'Những địa điểm không thể bỏ qua khi khám phá thành phố ngàn hoa...',
     author: {
       name: 'Phạm Thị D',
-      avatar: '/images/avatars/avatar4.jpg',
+      avatar: '/img/avatars/avatar4.jpg',
     },
     likes: 210,
     comments: 67,
     shares: 89,
     tags: ['Đà Lạt', '360 độ', 'Du lịch'],
-    imageUrl: '/images/360/dalat.jpg',
+    imageUrl: '/img/360/dalat.jpg',
     timestamp: '4 giờ trước',
   }
 ];
@@ -235,12 +236,11 @@ export default function ShareSpaceSidebar() {
                       position: 'relative'
                     }}
                   >
-                    <img 
+                    <Image 
                       src={post.imageUrl} 
                       alt={post.title}
+                      fill
                       style={{
-                        width: '100%',
-                        height: '100%',
                         objectFit: 'cover',
                       }}
                     />

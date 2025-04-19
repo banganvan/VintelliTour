@@ -162,7 +162,7 @@ const CommentForm = ({ onSubmit, value, onChange }: {
 }) => {
   return (
     <CommentBox>
-      <Avatar src="/images/avatars/default.jpg" />
+      <Avatar src="/img/avatars/default.jpg" />
       <TextField
         fullWidth
         variant="outlined"
@@ -189,19 +189,19 @@ const samplePost: Post = {
   content: 'Trải nghiệm vịnh Hạ Long với góc nhìn 360 độ tuyệt đẹp. Khám phá các hang động, đảo đá và làng chài nổi tiếng của vịnh Hạ Long qua công nghệ 360 độ.',
   author: {
     name: 'Nguyễn Văn A',
-    avatar: '/images/avatars/avatar1.jpg',
+    avatar: '/img/avatars/avatar1.jpg',
   },
   likes: 120,
   comments: 45,
   shares: 30,
   tags: ['Hạ Long', '360 độ', 'Du lịch'],
-  imageUrl: '/images/360/canh_1.jpg',
+  imageUrl: '/img/360/canh_1.jpg',
   commentsList: [
     {
       id: '1',
       author: {
         name: 'Trần Thị B',
-        avatar: '/images/avatars/avatar2.jpg',
+        avatar: '/img/avatars/avatar2.jpg',
       },
       content: 'Cảnh đẹp quá! Mình cũng muốn đi thử trải nghiệm này.',
       timestamp: '2 giờ trước',
@@ -211,7 +211,7 @@ const samplePost: Post = {
           id: '2',
           author: {
             name: 'Nguyễn Văn A',
-            avatar: '/images/avatars/avatar1.jpg',
+            avatar: '/img/avatars/avatar1.jpg',
           },
           content: 'Cảm ơn bạn! Bạn nên đi vào mùa thu, thời tiết rất đẹp.',
           timestamp: '1 giờ trước',
@@ -257,7 +257,7 @@ export default function PostDetailPage() {
         id: Date.now().toString(),
         author: {
           name: 'Người dùng hiện tại',
-          avatar: '/images/avatars/default.jpg',
+          avatar: '/img/avatars/default.jpg',
         },
         content: newComment,
         timestamp: 'Vừa xong',

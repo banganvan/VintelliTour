@@ -1,7 +1,8 @@
 'use client';
 
-import { Box, Container, Typography, Card, CardMedia, CardContent, Chip } from '@mui/material';
+import { Box, Container, Typography, Card, CardContent, Chip } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import Image from 'next/image';
 
 const StyledCard = styled(Card)(({ theme }) => ({
   height: '100%',
@@ -18,28 +19,28 @@ const attractions = [
     id: 1,
     title: 'Núi Fansipan',
     description: 'Đỉnh núi cao nhất Đông Dương với độ cao 3.143m, được mệnh danh là "Nóc nhà Đông Dương".',
-    image: '/images/provinces/sapa/fansipan.jpg',
+    image: '/img/provinces/sapa/fansipan.jpg',
     tags: ['Thiên nhiên', 'Khám phá'],
   },
   {
     id: 2,
     title: 'Thung lũng Mường Hoa',
     description: 'Thung lũng đẹp nhất Sa Pa với ruộng bậc thang và bãi đá cổ có nhiều hình chạm khắc bí ẩn.',
-    image: '/images/provinces/sapa/muong-hoa.jpg',
+    image: '/img/provinces/sapa/muong-hoa.jpg',
     tags: ['Cảnh đẹp', 'Văn hóa'],
   },
   {
     id: 3,
     title: 'Bản Cát Cát',
     description: 'Bản làng cổ của người Mông với nghề dệt thổ cẩm truyền thống và thác nước đẹp.',
-    image: '/images/provinces/sapa/cat-cat.jpg',
+    image: '/img/provinces/sapa/cat-cat.jpg',
     tags: ['Văn hóa', 'Trải nghiệm'],
   },
   {
     id: 4,
     title: 'Nhà thờ đá Sa Pa',
     description: 'Công trình kiến trúc Pháp cổ kính, biểu tượng của thị trấn Sa Pa.',
-    image: '/images/provinces/sapa/nha-tho-da.jpg',
+    image: '/img/provinces/sapa/nha-tho-da.jpg',
     tags: ['Di tích lịch sử', 'Kiến trúc'],
   },
 ];
@@ -63,29 +64,34 @@ export default function SapaPage() {
           Điểm đến nổi bật
         </Typography>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mt-4">
           {attractions.map((attraction) => (
-            <StyledCard key={attraction.id}>
-              <CardMedia
-                component="img"
-                height="200"
-                image={attraction.image}
-                alt={attraction.title}
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h6" component="div">
-                  {attraction.title}
-                </Typography>
-                <Typography variant="body2" color="text.secondary" paragraph>
-                  {attraction.description}
-                </Typography>
-                <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
-                  {attraction.tags.map((tag) => (
-                    <Chip key={tag} label={tag} size="small" />
-                  ))}
+            <div key={attraction.id}>
+              <StyledCard>
+                <Box sx={{ position: 'relative', width: '100%', height: '200px' }}>
+                  <Image
+                    src={attraction.image}
+                    alt={attraction.title}
+                    fill
+                    style={{ objectFit: 'cover' }}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
                 </Box>
-              </CardContent>
-            </StyledCard>
+                <CardContent>
+                  <Typography gutterBottom variant="h6" component="div">
+                    {attraction.title}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary" paragraph>
+                    {attraction.description}
+                  </Typography>
+                  <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
+                    {attraction.tags.map((tag) => (
+                      <Chip key={tag} label={tag} size="small" />
+                    ))}
+                  </Box>
+                </CardContent>
+              </StyledCard>
+            </div>
           ))}
         </div>
 

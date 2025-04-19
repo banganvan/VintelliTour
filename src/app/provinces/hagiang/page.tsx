@@ -1,7 +1,8 @@
 'use client';
 
-import { Box, Container, Typography, Grid, Card, CardMedia, CardContent, Chip } from '@mui/material';
+import { Box, Container, Typography, Card, CardContent, Chip } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import Image from 'next/image';
 
 const StyledCard = styled(Card)(({ theme }) => ({
   height: '100%',
@@ -18,28 +19,28 @@ const attractions = [
     id: 1,
     title: 'Cột cờ Lũng Cú',
     description: 'Điểm cực Bắc của Tổ quốc, nơi có cột cờ quốc gia cao 1.700m so với mực nước biển.',
-    image: '/images/provinces/hagiang/cot-co-lung-cu.jpg',
+    image: '/img/provinces/hagiang/cot-co-lung-cu.jpg',
     tags: ['Di tích lịch sử', 'Cảnh đẹp'],
   },
   {
     id: 2,
     title: 'Cao nguyên đá Đồng Văn',
     description: 'Công viên địa chất toàn cầu với cảnh quan đá vôi độc đáo và văn hóa dân tộc đặc sắc.',
-    image: '/images/provinces/hagiang/cao-nguyen-da.jpg',
+    image: '/img/provinces/hagiang/cao-nguyen-da.jpg',
     tags: ['Di sản thế giới', 'Thiên nhiên'],
   },
   {
     id: 3,
     title: 'Dinh thự họ Vương',
     description: 'Công trình kiến trúc độc đáo của người Mông, từng là nơi ở của vua Mèo Vương Chí Sình.',
-    image: '/images/provinces/hagiang/dinh-thu-vuong.jpg',
+    image: '/img/provinces/hagiang/dinh-thu-vuong.jpg',
     tags: ['Văn hóa', 'Lịch sử'],
   },
   {
     id: 4,
     title: 'Mã Pí Lèng',
     description: 'Một trong tứ đại đỉnh đèo đẹp nhất Việt Nam, với cảnh quan núi non hùng vĩ.',
-    image: '/images/provinces/hagiang/ma-pi-leng.jpg',
+    image: '/img/provinces/hagiang/ma-pi-leng.jpg',
     tags: ['Cảnh đẹp', 'Khám phá'],
   },
 ];
@@ -63,16 +64,19 @@ export default function HagiangPage() {
           Điểm đến nổi bật
         </Typography>
 
-        <Grid container spacing={4} sx={{ mt: 2 }}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mt-4">
           {attractions.map((attraction) => (
-            <Grid item xs={12} sm={6} md={3} key={attraction.id}>
+            <div key={attraction.id}>
               <StyledCard>
-                <CardMedia
-                  component="img"
-                  height="200"
-                  image={attraction.image}
-                  alt={attraction.title}
-                />
+                <Box sx={{ position: 'relative', width: '100%', height: '200px' }}>
+                  <Image
+                    src={attraction.image}
+                    alt={attraction.title}
+                    fill
+                    style={{ objectFit: 'cover' }}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
+                </Box>
                 <CardContent>
                   <Typography gutterBottom variant="h6" component="div">
                     {attraction.title}
@@ -87,9 +91,9 @@ export default function HagiangPage() {
                   </Box>
                 </CardContent>
               </StyledCard>
-            </Grid>
+            </div>
           ))}
-        </Grid>
+        </div>
 
         <Box sx={{ mt: 4 }}>
           <Typography variant="h4" gutterBottom>
